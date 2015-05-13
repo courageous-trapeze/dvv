@@ -1,9 +1,8 @@
 imageUtils = require('./imageUtils.js');
 
 var init = function(dataArray){
-  console.log('DATA ARRAY:')
-  console.log(dataArray);
-
+  // console.log('DATA ARRAY:')
+  // console.log(dataArray);
   var dvv = require('./dvv.js');
 
   // //Test : invert a matrix using math.js's math.inv function imported on client side
@@ -21,4 +20,5 @@ var init = function(dataArray){
 
 };
 
-imageUtils.createDataArrayFromImageFile('server/rgb.png', init);
+imageUtils.createDataArrayFromJpegFile('server/rgb.jpg', init);
+
