@@ -2,16 +2,23 @@
   "name": "dvv-global",
   "version": "1.0.0",
   "description": "global dpendencies",
-  "main": "index.js",
+  "main": "server/server.js",
   "dependencies": {
+    "bower": "^1.4.1",
     "color-space": "^1.1.2",
     "delta-e": "0.0.7",
+    "express": "^4.12.3",
     "grunt": "^0.4.5",
-    "grunt-contrib-jshint": "^0.11.2"
+    "grunt-contrib-jshint": "^0.11.2",
+    "jpeg-js": "^0.1.1",
+    "node-png": "^0.4.3",
+    "serve-favicon": "^2.2.0",
+    "socket.io": "^1.3.5"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server/server.js",
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "repository": {
     "type": "git",
