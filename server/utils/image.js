@@ -59,8 +59,6 @@ imageUtils.createDataArrayFromJpegFile = function(filename, callback){
 
   });
 
-
-
 };
 
 imageUtils.createJpegFileFromDataArray = function(filename, dataArray, width, height, callback){

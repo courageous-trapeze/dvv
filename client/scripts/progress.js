@@ -70,14 +70,13 @@ var numberText = meter.append('text')
     .attr('text-anchor', 'middle')
     .attr('dy', '.35em');
 
-
 // update progress display 
 function updateProgress(data) {
-    //console.log(data);
-    foreground.attr('d', arc.endAngle(twoPi * data.progress));
-    front.attr('d', arc.endAngle(twoPi * data.progress));
-    numberText.text(formatPercent(data.progress));
-    displayProgress(data.redGrayCounter);
+  //console.log(data);
+  foreground.attr('d', arc.endAngle(twoPi * data.progress));
+  front.attr('d', arc.endAngle(twoPi * data.progress));
+  numberText.text(formatPercent(data.progress));
+  displayProgress(data.redGrayCounter);
 }
 
 var displayProgress = function(counter) {
@@ -94,13 +93,13 @@ var displayProgress = function(counter) {
   var legendSpacing = 5;
   var color = d3.scale.ordinal().range(['#d62728', '#7f7f7f']);
 
-   d3.select('div#semicircleResults svg').remove();
-   d3.select('.progress-heading').remove();
+  d3.select('div#semicircleResults svg').remove();
+  d3.select('.progress-heading').remove();
 
-d3.select('div#semicircleResults')
-  .append('div')
-  .attr('class', 'progress-heading')
-  .text('Thanks for helping us process our image!');
+  d3.select('div#semicircleResults')
+    .append('div')
+    .attr('class', 'progress-heading')
+    .text('Thanks for helping us process our image!');
 
   var svg = d3.select('div#semicircleResults')
     .append('svg')
@@ -113,8 +112,6 @@ d3.select('div#semicircleResults')
     .style('right', '50px')
     .append('g')
     .attr('transform', 'translate(' + (width/2) + ',' + (height/2) + ')');
-
-
 
   var arc = d3.svg.arc()
     .innerRadius(radius - donutWidth)
@@ -132,8 +129,8 @@ d3.select('div#semicircleResults')
     .append('path')
     .attr('d', arc)
     .attr('fill', function(d, i){
-      // 'd' here refers to an object with data, value, startAngle, endAngle, and padAngle properties
-      return color(d.data.label);
+    // 'd' here refers to an object with data, value, startAngle, endAngle, and padAngle properties
+    return color(d.data.label);
     });
 
   path.on('mouseover', function(d) {
@@ -194,25 +191,4 @@ d3.select('div#semicircleResults')
   tooltip.append('div')
     .attr('class', 'percent');
 
-
-
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

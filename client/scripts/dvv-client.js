@@ -47,7 +47,7 @@ var dvvClientConfig = function(params){
   if ('numberOfWorkers' in params){
     NUMBER_OF_WORKERS = params.numberOfWorkers;
   }
-}
+};
 
 
 //Upon button press, this function notifies the master
@@ -59,7 +59,7 @@ var clientRdy = function(btn){
     socket.emit('ready');
   }
   ON_READY();
-}
+};
 
 
 var dvvClientStart = function(){
@@ -85,9 +85,9 @@ var dvvClientStart = function(){
     worker.addEventListener('message', function(e) {
       //Send the results if successful
       socket.emit('completed', {
-        "id": data.id,
-        "result": e.data,
-	      "client":socket.id
+        id: data.id,
+        result: e.data,
+        client:socket.id
       });
       //Kill the worker
       worker.terminate();
@@ -99,8 +99,8 @@ var dvvClientStart = function(){
       console.log("Worker has encountered an error with computation");
       //Send an error message back to master process
       socket.emit('completed', {
-        "id": -1,
-        "result": null
+        id: -1,
+        result: null
       });
       worker.terminate();
     }, false);
@@ -130,4 +130,4 @@ var dvvClientStart = function(){
     connectedClients = data.availableClients ;
     updateConnected(connectedClients);
   });
-}
+};
