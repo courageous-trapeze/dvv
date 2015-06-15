@@ -1,8 +1,6 @@
 var express = require('express');
 var http = require('http');
 var favicon = require('serve-favicon');
-var colorSpace = require('color-space');
-var DeltaE = require('delta-e');
 
 //Initiate server variables in global scope
 var server;
@@ -36,7 +34,7 @@ var DATA = [1, 2, 3];
 var PARTITION_LENGTH = 1;
 
 //Callback to be made on complete of entire distributed task
-	var CALLBACK = function(results){ console.log(results);  return results; };
+var CALLBACK = function(results){ console.log(results); return results; };
 
 //Set a timer to measure the duration of entire distributed task
 //For testing purposes
@@ -129,7 +127,7 @@ dvv.start = function(){
   //Array of sockets of available clients
   var availableClients = [];
 
-	var scoreBoard = {};
+  var scoreBoard = {};
 
   //Collection of unsent packets prioritized using a min heap
   var unsentPackets = new MinHeap();
@@ -169,13 +167,13 @@ dvv.start = function(){
       console.time('timer');
     }
 
-		availableClients.push(socket);
+    availableClients.push(socket);
 
-		// populate the scoreboard with and object that details client and score.
-		var clientId = socket.conn.id;
-		scoreBoard[clientId] = 0;
+    // populate the scoreboard with and object that details client and score.
+    var clientId = socket.conn.id;
+    scoreBoard[clientId] = 0;
 
-		//Notify everyone a new client has been added
+    //Notify everyone a new client has been added
     io.emit('clientChange', {
       availableClients : availableClients.length
     });
@@ -204,8 +202,8 @@ dvv.start = function(){
         completedPackets.insert(data);
 
         console.log('completedPackets:', completedPackets);
-				var clientId = socket.conn.id;
-				scoreBoard[clientId]++;
+        var clientId = socket.conn.id;
+        scoreBoard[clientId]++;
 
         // Update everyone on the current progress
         // This can be limited or removed to reduce congestion
@@ -231,21 +229,21 @@ dvv.start = function(){
         for (var i=0; i<finishedResults.length; i++){
           concatResults = concatResults.concat(finishedResults[i]);
         }
-        // var results =  callback(finishedResults[0].concat(finishedResults[1]), IMAGE_WIDTH, IMAGE_HEIGHT);
-        var results =  callback(concatResults, IMAGE_WIDTH, IMAGE_HEIGHT);
+        // var results = callback(finishedResults[0].concat(finishedResults[1]), IMAGE_WIDTH, IMAGE_HEIGHT);
+        var results = callback(concatResults, IMAGE_WIDTH, IMAGE_HEIGHT);
 
-				// Reformat the scores to be an array of objects.
-				var scoresArr = [];
-				for(var val in scoreBoard) {
-					if (scoreBoard.hasOwnProperty(val)) {
-						var newObj = {};
-						newObj['name'] = val;
-						newObj['count'] = scoreBoard[val];
-						scoresArr.push(newObj);
-					}
-				}
-				
-        io.emit('complete',  { 
+        // Reformat the scores to be an array of objects.
+        var scoresArr = [];
+        for (var val in scoreBoard) {
+          if (scoreBoard.hasOwnProperty(val)) {
+            var newObj = {};
+            newObj.name = val;
+            newObj.count = scoreBoard[val];
+            scoresArr.push(newObj);
+          }
+        }
+        
+        io.emit('complete', {
           results : results,
           score: scoresArr
         });

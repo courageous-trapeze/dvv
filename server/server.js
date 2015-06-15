@@ -14,7 +14,7 @@ var init = function(dataArray, width, height){
     staticPath: '/../client',
     timeout: 25000,
     data: dataArray,
-    partitionLength: 1000,
+    partitionLength: 10000,
     width: width,
     height: height,
     func: findColor,
@@ -30,7 +30,6 @@ var init = function(dataArray, width, height){
   dvv.start();
 
 };
-
 
 // function to return pixels with rgb values similar to red as themselves; all other pixels are converted to grayscale
 var findColor = function () {
