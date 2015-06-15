@@ -1,4 +1,4 @@
-#dvv.js
+#Color Me Dvv
 ##To run
     Run npm install
 We recommend you use ngrok for development
@@ -158,8 +158,6 @@ and create a custom event for the master process. The master process can then be
 
 
 ##Team Members
-Nate Bailey - Product Owner
-
-Eddie Kong - Technical Lead
-
-Andy Tran - Scrum Master
+  - __Product Owner__: [Melanie Gin](https://github.com/onelovelyname)
+  - __Scrum Master__: [Kevin Huang](https://github.com/kevhuang)
+  - __Development Team Members__: [John Yeglinski](https://github.com/jyeg), [Kevin Huang](https://github.com/kevhuang), [Melanie Gin](https://github.com/onelovelyname), [Michael Harris](https://github.com/mwharris333)
